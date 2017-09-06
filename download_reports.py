@@ -142,17 +142,18 @@ def manipulate_reports():
 def store_reports():
     products = manipulate_reports()
 
-    rt = RunTime(run_at=datetime.datetime.now())
-    rt.save()
+    if products:
+        rt = RunTime(run_at=datetime.datetime.now())
+        rt.save()
 
-    idx = 0
-    for key, val in products.items():
-        # idx += 1
-        # if idx > 2000:
-        #     break
-        val['run_at_id'] = rt.id
-        product = Product(**val)
-        product.save()
+        idx = 0
+        for key, val in products.items():
+            # idx += 1
+            # if idx > 2000:
+            #     break
+            val['run_at_id'] = rt.id
+            product = Product(**val)
+            product.save()
 
     print len(products)
 
