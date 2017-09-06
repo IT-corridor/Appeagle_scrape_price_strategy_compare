@@ -159,8 +159,13 @@ def store_reports():
 
 if __name__ == '__main__':
     interval = Interval.objects.all()[0].interval * 60      # in minutes
-    last_run = RunTime.objects.all().order_by('-run_at')[0].run_at.replace(tzinfo=None)
-    passdue = (datetime.datetime.now() - last_run).seconds / 60
+    last_run = RunTime.objects.all().order_by('-run_at')
+
+    if last_run:
+        last_run = last_run[0].run_at.replace(tzinfo=None)
+        passdue = (datetime.datetime.now() - last_run).seconds / 60
+    else:
+        passdue = interval
 
     # pdb.set_trace()    
     if interval <= passdue:
