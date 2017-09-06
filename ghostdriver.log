@@ -1,0 +1,70 @@
+[INFO  - 2017-09-06T12:21:12.530Z] GhostDriver - Main - running on port 48111
+[INFO  - 2017-09-06T12:21:13.474Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":false,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Unknown; Linux x86_64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2017-09-06T12:21:13.476Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.customHeaders:  - {}
+[INFO  - 2017-09-06T12:21:13.476Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"linux-unknown-64bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2017-09-06T12:21:13.476Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: dfa62bc0-92fd-11e7-83cd-19f3a860d1e3
+[ERROR - 2017-09-06T12:21:30.414Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: Facebook Pixel Error: Error: Duplicate Pixel ID: 373024293072445
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:21:30.414Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  (anonymous function) (https://www.fullstory.com/s/fs.js:78)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:21:53.331Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: Facebook Pixel Error: Error: Duplicate Pixel ID: 373024293072445
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:21:53.332Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  (anonymous function) (https://www.fullstory.com/s/fs.js:78)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.763Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: TypeError: /images/csv-upload.png is not a constructor (evaluating 'new Image(1,1)')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.763Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  loadImage (https://js.hs-analytics.net/analytics/1504700700000/2768373.js:16)
+  logError (https://js.hs-analytics.net/analytics/1504700700000/2768373.js:16)
+  t (https://js.hs-analytics.net/analytics/1504700700000/2768373.js:16)
+  e (https://js.hs-analytics.net/analytics/1504700700000/2768373.js:16)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.772Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: TypeError: /images/csv-upload.png is not a constructor (evaluating 'new Image')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.773Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  writeImgTag (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:9)
+  (anonymous function) (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:9)
+  eachApiKey (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:6)
+  writeBeacon (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:9)
+  writeMessage (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:9)
+  flushNow (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:9)
+  waitThenFlush (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:9)
+  autoInitialize (https://cdn.pendo.io/agent/static/d9299d9c-1f4f-4ae2-7bda-26b827f0f57a/pendo.js:7)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.807Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: TypeError: /images/csv-upload.png is not a constructor (evaluating 'new Image')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.807Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  m (https://assets.customer.io/assets/track.js:1)
+  n (https://assets.customer.io/assets/track.js:1)
+  (anonymous function) (https://assets.customer.io/assets/track.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.808Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: TypeError: /images/csv-upload.png is not a constructor (evaluating 'new Image')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.809Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  m (https://assets.customer.io/assets/track.js:1)
+  n (https://assets.customer.io/assets/track.js:1)
+  (anonymous function) (https://assets.customer.io/assets/track.js:1)
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.810Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - msg: TypeError: /images/csv-upload.png is not a constructor (evaluating 'new Image')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2017-09-06T12:22:03.810Z] Session [dfa62bc0-92fd-11e7-83cd-19f3a860d1e3] - page.onError - stack:
+  m (https://assets.customer.io/assets/track.js:1)
+  n (https://assets.customer.io/assets/track.js:1)
+  (anonymous function) (https://assets.customer.io/assets/track.js:1)
+
+  phantomjs://platform/console++.js:263 in error
