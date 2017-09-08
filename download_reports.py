@@ -139,6 +139,9 @@ def store_reports():
             ProductHistory.objects.create(**val)
 
     print len(products)
+    path = '{}@@@'.format(len(products))
+    with open(path, 'w') as f:
+        f.write('123412')
 
 
 if __name__ == '__main__':
@@ -151,10 +154,6 @@ if __name__ == '__main__':
     else:
         passdue = interval
 
-    path = '@@@{}-{}'.format(passdue, interval)
-
-    with open(path, 'w') as f:
-        f.write(str(now))
     # pdb.set_trace()    
     if interval <= passdue:
         store_reports()
