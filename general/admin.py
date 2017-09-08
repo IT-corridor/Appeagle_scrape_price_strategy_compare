@@ -27,11 +27,13 @@ class RunTimeFilter(SimpleListFilter):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['sku', 'asin', 'title', 'bb_status', 'our_min_price', 'bb_price', 'bb_price_prev', 'appeagle_strategy', 'num_orders', 'run_at']
+    list_display = ['sku', 'asin', 'title', 'bb_status', 'our_min_price', 
+                    'bb_price', 'bb_price_prev', 'appeagle_strategy', 
+                    'num_orders', 'added_at', 'updated_at']
     search_fields = ['sku', 'asin']
 
     actions = ['export_products']
-    list_filter = (RunTimeFilter,)
+    # list_filter = (RunTimeFilter,)
 
     def get_queryset(self, request):
         qs = super(ProductAdmin, self).get_queryset(request)
@@ -50,8 +52,8 @@ class ProductAdmin(admin.ModelAdmin):
         content_type = mimetypes.guess_type( path )[0]
 
         response = HttpResponse(wrapper, content_type = content_type)
-        response['Content-Length'] = os.path.getsize( path ) # not FileField instance
-        response['Content-Disposition'] = 'attachment; filename=%s' % smart_str( os.path.basename( path ) ) # same here        
+        response['Content-Length'] = os.path.getsize( path ) 
+        response['Content-Disposition'] = 'attachment; filename=%s' % smart_str( os.path.basename( path ) ) 
         return response
 
     export_products.short_description = "Export products as CSV file" 
@@ -90,5 +92,5 @@ class ProductAdmin(admin.ModelAdmin):
     bb_price_prev.short_description = 'Prev BB Price'
 
 admin.site.register(Product, ProductAdmin)
-admin.site.register(RunTime)
+admin.site.register(ProductHistory)
 admin.site.register(Interval)

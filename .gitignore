@@ -1,0 +1,3 @@
+*.pyc
+ghostdriver.log
+migrations/

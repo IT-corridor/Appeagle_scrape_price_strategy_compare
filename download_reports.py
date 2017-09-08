@@ -103,39 +103,27 @@ def manipulate_reports():
             product['title'] = item['Title']
             product['bb_status'] = True
             product['bb_price'] = item['Buy Box Price']
+            product['num_orders'] = 0
+
             products[product['asin']] = product
 
     for item in aaf:
         if item['SKU'].startswith('C_'):        
             asin = item['ITEM_ID'].replace("'", '').strip()
             if asin in products:
-                product = products[asin]
-            else:
-                product = {}
-                product['sku'] = item['SKU']
-                product['asin'] = asin
-                product['title'] = item['TITLE']
-                product['bb_status'] = False
-                
-            product['our_min_price'] = item['MIN_PRICE']
-            product['appeagle_strategy'] = item['STRATEGY_ID']
+                product = products[asin]            
+                product['our_min_price'] = item['MIN_PRICE']
+                product['appeagle_strategy'] = item['STRATEGY_ID']
 
-            products[asin] = product
+                products[asin] = product
 
     for item in dr30:
         if item['SKU'].startswith('C_'):        
             if item['(Child) ASIN'] in products:
-                product = products[item['(Child) ASIN']]
-            else:
-                product = {}
-                product['sku'] = item['SKU']
-                product['asin'] = item['(Child) ASIN']
-                product['title'] = item['Title']
-                product['bb_status'] = False
-                
-            product['num_orders'] = item['Units Ordered']
+                product = products[item['(Child) ASIN']]                
+                product['num_orders'] += item['Units Ordered']
 
-            products[item['(Child) ASIN']] = product
+                products[item['(Child) ASIN']] = product
 
     return products
 
@@ -143,27 +131,22 @@ def store_reports():
     products = manipulate_reports()
 
     if products:
-        rt = RunTime(run_at=datetime.datetime.now())
-        rt.save()
+        Product.objects.all().update(bb_status=False)
 
-        idx = 0
         for key, val in products.items():
-            # idx += 1
-            # if idx > 2000:
-            #     break
-            val['run_at_id'] = rt.id
-            product = Product(**val)
-            product.save()
+            val['updated_at'] = datetime.datetime.now()            
+            Product.objects.update_or_create(asin=key, defaults=val)
+            ProductHistory.objects.create(**val)
 
     print len(products)
 
 
 if __name__ == '__main__':
     interval = Interval.objects.all()[0].interval * 60      # in minutes
-    last_run = RunTime.objects.all().order_by('-run_at')
+    last_run = Product.objects.all().order_by('-updated_at')
 
     if last_run:
-        last_run = last_run[0].run_at.replace(tzinfo=None)
+        last_run = last_run[0].updated_at
         passdue = (datetime.datetime.now() - last_run).seconds / 60
     else:
         passdue = interval
