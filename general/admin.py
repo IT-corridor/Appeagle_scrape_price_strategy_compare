@@ -41,7 +41,7 @@ class ProductAdmin(admin.ModelAdmin):
         return qs
 
     def asin_his(self, obj):
-        return u'<a href="/admin/general/producthistory/?q={0}">{0}</a>'.format(obj.asin)
+        return u'<a href="/admin/general/producthistory/?o=9&q={0}">{0}</a>'.format(obj.asin)
     asin_his.allow_tags = True
     asin_his.short_description = "ASIN"
 

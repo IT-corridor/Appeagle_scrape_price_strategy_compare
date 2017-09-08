@@ -1,4 +1,5 @@
-#*.pyc
-#*.png
-#ghostdriver.log
-#migrations/
+*.pyc
+*.png
+ghostdriver.log
+migrations/
+db.sqlite3
