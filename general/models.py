@@ -35,7 +35,7 @@ class Product(models.Model):
     prime_az = models.BooleanField('Prime/AZ', default=False)
     num_orders = models.IntegerField('No. Of Orders w/in 30 Days ', default=0, null=True, blank=True) 
     added_at = models.DateTimeField('Added Time', auto_now_add=True)
-    updated_at = models.CharField('Updated Time', max_length=30, null=True, blank=True)
+    updated_at = models.DateTimeField('Updated Time', null=True, blank=True)
 
     def __unicode__(self):
         return self.asin
@@ -53,7 +53,7 @@ class ProductHistory(models.Model):
     									 choices=STRATEGY_CHOICES, null=True, blank=True)
     prime_az = models.BooleanField('Prime/AZ', default=False)
     num_orders = models.IntegerField('No. Of Orders w/in 30 Days ', default=0, null=True, blank=True) 
-    updated_at = models.CharField('Updated Time', max_length=30, null=True, blank=True)
+    updated_at = models.DateTimeField('Updated Time', null=True, blank=True)
 
     def __unicode__(self):
         return self.asin

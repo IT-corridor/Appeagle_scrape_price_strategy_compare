@@ -27,8 +27,8 @@ class RunTimeFilter(SimpleListFilter):
 
 
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['sku', 'asin', 'title', 'bb_status', 'our_min_price', 
-                    'bb_price', 'bb_price_prev', 'appeagle_strategy', 
+    list_display = ['sku', 'asin_his', 'title', 'bb_status', 'our_min_price', 
+                    'bb_price', 'appeagle_strategy', 
                     'num_orders', 'added_at', 'updated_at']
     search_fields = ['sku', 'asin']
 
@@ -39,6 +39,11 @@ class ProductAdmin(admin.ModelAdmin):
         qs = super(ProductAdmin, self).get_queryset(request)
         self.runtime = request.GET.get('runtime')
         return qs
+
+    def asin_his(self, obj):
+        return u'<a href="/admin/general/producthistory/?q={0}">{0}</a>'.format(obj.asin)
+    asin_his.allow_tags = True
+    asin_his.short_description = "ASIN"
 
     def export_products(self, request, queryset):
         selected = request.POST.getlist(admin.ACTION_CHECKBOX_NAME)
@@ -66,7 +71,7 @@ class ProductAdmin(admin.ModelAdmin):
         for product in queryset:
             product_ = model_to_dict(product, fields=result_csv_fields)
             for key, val in product_.items():
-                if type(val) not in (float, int, long, bool) and val:
+                if type(val) not in (float, int, long, bool, datetime.datetime) and val:
                     product_[key] = val.encode('utf-8')
 
             try:
@@ -91,6 +96,13 @@ class ProductAdmin(admin.ModelAdmin):
 
     bb_price_prev.short_description = 'Prev BB Price'
 
+
+class ProductHistoryAdmin(admin.ModelAdmin):
+    list_display = ['sku', 'asin', 'title', 'bb_status', 'our_min_price', 
+                    'bb_price', 'appeagle_strategy', 'num_orders', 'updated_at']
+    search_fields = ['sku', 'asin']
+
+
 admin.site.register(Product, ProductAdmin)
-admin.site.register(ProductHistory)
+admin.site.register(ProductHistory, ProductHistoryAdmin)
 admin.site.register(Interval)

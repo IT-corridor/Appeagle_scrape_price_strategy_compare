@@ -24,7 +24,7 @@ def get_reports():
         driver.set_window_size(1850, 1000)
         url = 'https://app.appeagle.com/login?redirect=upload.aspx%3f'
         driver.get(url)
-        driver.save_screenshot("login.png")
+        # driver.save_screenshot("login.png")
 
         email = driver.find_element_by_id("blankMasterContent_emailTextBox")
         passwd = driver.find_element_by_id("blankMasterContent_passwordTextBox")
@@ -33,7 +33,7 @@ def get_reports():
         email.send_keys("premiumupgrades@gmail.com")
         passwd.send_keys('@PPeag1epaSS')
         login.click()
-        driver.save_screenshot("disabled.png")    
+        # driver.save_screenshot("disabled.png")    
 
         cookies = driver.get_cookies()
         cookie = '; '.join(['{}={}'.format(item['name'], item['value']) for item in cookies])
@@ -121,7 +121,7 @@ def manipulate_reports():
         if item['SKU'].startswith('C_'):        
             if item['(Child) ASIN'] in products:
                 product = products[item['(Child) ASIN']]                
-                product['num_orders'] += item['Units Ordered']
+                product['num_orders'] += int(item['Units Ordered'])
 
                 products[item['(Child) ASIN']] = product
 
@@ -146,7 +146,7 @@ if __name__ == '__main__':
     last_run = Product.objects.all().order_by('-updated_at')
 
     if last_run:
-        last_run = last_run[0].updated_at
+        last_run = last_run[0].updated_at.replace(tzinfo=None)
         passdue = (datetime.datetime.now() - last_run).seconds / 60
     else:
         passdue = interval
