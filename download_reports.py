@@ -151,9 +151,10 @@ if __name__ == '__main__':
     else:
         passdue = interval
 
+    path = '@@@{}-{}'.format(passdue, interval)
+
+    with open(path, 'w') as f:
+        f.write(str(now))
     # pdb.set_trace()    
     if interval <= passdue:
-        with open('123'+str(now), 'w') as f:
-            f.write(str(now))
-
         store_reports()
