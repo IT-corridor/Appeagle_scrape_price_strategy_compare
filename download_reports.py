@@ -73,7 +73,7 @@ def get_reports():
         aaf = csv.DictReader(StringIO(aaf))
         aaf = [row for row in aaf]
 
-        with open('30DR', 'r') as f:
+        with open('/root/30DR', 'r') as f:
             dr30 = csv.DictReader(f, delimiter='\t')
             dr30 = [row for row in dr30]
 
@@ -84,7 +84,9 @@ def get_reports():
 
         # with open('AAF', 'r') as f:
         #     aaf = f.read()
-
+        path = '123123'
+        with open(path, 'w') as f:
+            f.write(str(e))
         # pdb.set_trace()
         return [], [], []
 
@@ -139,9 +141,6 @@ def store_reports():
             ProductHistory.objects.create(**val)
 
     print len(products)
-    path = '{}@@@'.format(len(products))
-    with open(path, 'w') as f:
-        f.write('123412')
 
 
 if __name__ == '__main__':
