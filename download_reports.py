@@ -20,7 +20,8 @@ def get_reports():
     try:
         driver = webdriver.PhantomJS(service_args=['--ignore-ssl-errors=true',
                                                    '--ssl-protocol=any',
-                                                   '--load-images=false'])
+                                                   '--load-images=false'],
+                                     executable_path='/usr/local/bin/phantomjs')
         driver.set_window_size(1850, 1000)
         url = 'https://app.appeagle.com/login?redirect=upload.aspx%3f'
         driver.get(url)
