@@ -33,7 +33,7 @@ class ProductAdmin(admin.ModelAdmin):
     search_fields = ['sku', 'asin']
 
     actions = ['export_products']
-    # list_filter = (RunTimeFilter,)
+    list_filter = ('bb_status',)
 
     def get_queryset(self, request):
         qs = super(ProductAdmin, self).get_queryset(request)
