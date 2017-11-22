@@ -4,7 +4,13 @@ This is a django project and web project so there is no need to compile deploy.
 
 ##### Steps to deploy:
 
-1. Git clone the source code to the server's specific path
+1. Install python2.7
+```
+apt-get install python-dev python-pip libxml2-dev libxslt1-dev zlib1g-dev libffi-dev libssl-dev
+pip install -r requirements.txt
+```
+
+2. Git clone the source code to the server's specific path
 
 (assume /root as follows)
 
@@ -12,8 +18,7 @@ This is a django project and web project so there is no need to compile deploy.
 git clone <repo>
 ```
 
-
-2. register download cron
+3. register download cron
 ```
 crontab -e
 
@@ -22,27 +27,27 @@ crontab -e
 ```
 Here you can change the interval. Now it is 10 minutes
 
-3. Migrate the server
+4. Migrate the server
 ```
 python manage.py makemigrations
 python manage.py migrate
 ```
-4. Make a super user
+5. Make a super user
 ```
 python manage.py createsuperuser
 ```
-5. Launch the site
+6. Launch the site
 ```
 cd /root/Appeagle_scrape_price_strategy_compare
 nohup python manage.py runserver 0.0.0.0:80 < /dev/null &
 ```
-6. check site
+7. check site
 ```
 http://<ip_address>/admin
 ```
 login with the credential for superuser you created.
 
-7. Define the interval for the cron job (in minute)
+8. Define the interval for the cron job (in minute)
 ```
 http://<ip_address>/admin/general/interval/
 
