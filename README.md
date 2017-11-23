@@ -29,7 +29,7 @@ Here you can change the interval. Now it is 10 minutes
 
 - Migrate the server
 ```
-python manage.py makemigrations
+python manage.py makemigrations general
 python manage.py migrate
 ```
 - Make a super user
