@@ -67,7 +67,7 @@ def get_reports():
     header['Content-Type'] = 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW'
     header['referer'] = "https://app.appeagle.com/upload"
 
-    aaf = requests.request("POST", url, data=body, headers=header).text
+    aaf = requests.request("POST", url, data=body, headers=header).text.encode('utf-8')
 
     lthtbb='\n'.join(lthtbb.split('\n')[2:-1])
     lthtbb = csv.DictReader(StringIO(lthtbb))
