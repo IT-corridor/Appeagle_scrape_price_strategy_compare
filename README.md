@@ -19,6 +19,8 @@ git clone <repo>
 ```
 
 - register download cron
+
+First check credentials in download script.
 ```
 crontab -e
 
